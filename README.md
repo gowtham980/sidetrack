@@ -134,6 +134,23 @@ stw() { cd "$(sidetrack path "$1")" || return; }
 | `prune` | `git worktree prune` |
 | `status` | `git status --porcelain=2` per worktree |
 
+
+
+## How it works
+
+Flow diagram and visual overview of the command path, default layout, and weekly lifecycle:
+
+- Interactive HTML: [`docs/how-it-works.html`](docs/how-it-works.html)
+- SVG visual: [`docs/flow.svg`](docs/flow.svg)
+
+```text
+You  →  sidetrack CLI  →  gitops  →  git worktree
+                              ↓
+              ~/code/app-worktrees/<branch>
+```
+
+Typical loop: mid-feature → `add`/`go` for hotfix or PR review → work isolated → ship → `rm`/`cleanup`.
+
 ## Development
 
 ```bash
