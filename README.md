@@ -2,6 +2,8 @@
 
 **Sensible git worktree manager for everyday multi-branch work.**
 
+![sidetrack](docs/images/project.png)
+
 Git worktrees are perfect for reviewing a PR while mid-feature, shipping a hotfix without stashing, or running parallel agent/dev checkouts — but the raw UX is awkward:
 
 ```bash
@@ -32,6 +34,55 @@ Developers still stash/checkout-switch for context changes even though worktrees
 - cleanup of merged sidecars is manual
 
 `sidetrack` is a thin, local-first CLI focused on the weekly workflow — not a full git GUI.
+
+## Use Cases
+
+### 1. Review a PR while mid-feature
+**Before:** Stash half-finished work, checkout the PR branch, lose flow, then try to restore context.  
+**After:** Spin a sidecar worktree and jump in without touching your feature branch.
+
+```bash
+sidetrack add pr/482 --existing   # or: sidetrack add review/482 -b pr-482
+sidetrack go pr/482
+# leave comments / reproduce bug, then return
+sidetrack go main
+sidetrack rm pr/482 -y
+```
+
+### 2. Ship a hotfix without stashing
+**Before:** Panic-stash WIP, switch to main, branch, fix, push, then unstash and hope conflicts behave.  
+**After:** Keep the messy feature tree open and fix from a clean sidecar.
+
+```bash
+sidetrack add hotfix/timeout --base main --shell
+# fix, commit, open PR from that worktree
+sidetrack status                  # feature tree still dirty; hotfix clean
+sidetrack rm hotfix/timeout -d -y
+```
+
+### 3. Parallel agent / local checkouts
+**Before:** Agents and local terminals fight over one dirty working tree.  
+**After:** Give each task its own checkout under a predictable layout.
+
+```bash
+sidetrack add agent/refactor-auth
+sidetrack add agent/docs-pass
+sidetrack list
+sidetrack status --short
+# run tools in each path independently
+cd "$(sidetrack path agent/refactor-auth)"
+```
+
+### 4. Clean up merged sidecars after a busy week
+**Before:** Forgotten worktree folders and stale branches pile up.  
+**After:** See dirty state at a glance, then prune merged trees safely.
+
+```bash
+sidetrack status
+sidetrack cleanup --dry-run
+sidetrack cleanup --yes
+sidetrack prune
+```
 
 ## Install
 
@@ -160,6 +211,12 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
 sidetrack --help
+```
+
+Regenerate the README project image:
+
+```bash
+python scripts/generate_project_image.py
 ```
 
 ## License
