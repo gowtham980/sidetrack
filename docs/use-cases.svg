@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="sidetrack use cases">
+  <title>sidetrack — Simple Use Cases</title>
+  <defs>
+    <style>
+      .bg { fill: #0b1220; }
+      .card { fill: #152238; stroke: #334155; stroke-width: 1.5; }
+      .card-main { fill: #1e3a5f; stroke: #60a5fa; stroke-width: 1.5; }
+      .card-side { fill: #134e4a; stroke: #2dd4bf; stroke-width: 1.5; }
+      .card-warn { fill: #3f1d1d; stroke: #f87171; stroke-width: 1.5; }
+      .card-ok { fill: #14532d; stroke: #4ade80; stroke-width: 1.5; }
+      .title { font: 700 34px ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #f8fafc; }
+      .sub { font: 500 16px ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #94a3b8; }
+      .h { font: 700 18px ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #f8fafc; }
+      .t { font: 500 15px ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #cbd5e1; }
+      .small { font: 500 13px ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #94a3b8; }
+      .badge { font: 700 12px ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #0b1220; }
+      .edge { stroke: #64748b; stroke-width: 2; fill: none; }
+      .arrow { fill: #94a3b8; }
+      .pill { fill: #38bdf8; }
+      .pill2 { fill: #2dd4bf; }
+      .pill3 { fill: #a78bfa; }
+      .pill4 { fill: #fbbf24; }
+      .pill5 { fill: #4ade80; }
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" class="arrow"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="900" rx="24"/>
+
+  <!-- Header -->
+  <text x="60" y="70" class="title">sidetrack — Simple Use Cases</text>
+  <text x="60" y="105" class="sub">One project, many desks. Stop stash/checkout chaos.</text>
+
+  <!-- Metaphor banner -->
+  <rect class="card" x="60" y="130" width="1080" height="90" rx="18"/>
+  <text x="90" y="170" class="h">Core idea</text>
+  <text x="90" y="198" class="t">Keep your main desk for daily work. Open a second desk for bugs, PRs, and experiments.</text>
+
+  <!-- Use case 1 -->
+  <rect class="card" x="60" y="250" width="520" height="180" rx="18"/>
+  <rect class="pill" x="85" y="275" width="28" height="28" rx="8"/>
+  <text x="94" y="294" class="badge">1</text>
+  <text x="130" y="295" class="h">Mid-feature + urgent bug</text>
+  <text x="90" y="335" class="t">You’re building a feature.</text>
+  <text x="90" y="360" class="t">A login bug needs fixing now.</text>
+  <text x="90" y="395" class="small">→ sidetrack add fix/login</text>
+  <text x="90" y="418" class="small">Work on the bug in a second folder. Feature stays safe.</text>
+
+  <!-- Use case 2 -->
+  <rect class="card" x="620" y="250" width="520" height="180" rx="18"/>
+  <rect class="pill2" x="645" y="275" width="28" height="28" rx="8"/>
+  <text x="654" y="294" class="badge">2</text>
+  <text x="690" y="295" class="h">Review a PR safely</text>
+  <text x="650" y="335" class="t">Need to check a teammate’s PR</text>
+  <text x="650" y="360" class="t">without leaving your branch.</text>
+  <text x="650" y="395" class="small">→ sidetrack add pr-42</text>
+  <text x="650" y="418" class="small">Open it next door. Your work is untouched.</text>
+
+  <!-- Use case 3 -->
+  <rect class="card" x="60" y="455" width="520" height="180" rx="18"/>
+  <rect class="pill3" x="85" y="480" width="28" height="28" rx="8"/>
+  <text x="94" y="499" class="badge">3</text>
+  <text x="130" y="500" class="h">Two things at once</text>
+  <text x="90" y="540" class="t">Long tests running on one branch.</text>
+  <text x="90" y="565" class="t">You still want to code elsewhere.</text>
+  <text x="90" y="600" class="small">→ two worktrees = two terminals</text>
+  <text x="90" y="623" class="small">No fighting over the same files.</text>
+
+  <!-- Use case 4 -->
+  <rect class="card" x="620" y="455" width="520" height="180" rx="18"/>
+  <rect class="pill4" x="645" y="480" width="28" height="28" rx="8"/>
+  <text x="654" y="499" class="badge">4</text>
+  <text x="690" y="500" class="h">Keep main clean</text>
+  <text x="650" y="540" class="t">Main folder = stable daily base.</text>
+  <text x="650" y="565" class="t">Experiments live next door.</text>
+  <text x="650" y="600" class="small">→ sidetrack rm experiment -d -y</text>
+  <text x="650" y="623" class="small">Delete side work when done. Main stays tidy.</text>
+
+  <!-- Bottom comparison -->
+  <rect class="card-warn" x="60" y="665" width="520" height="170" rx="18"/>
+  <text x="90" y="710" class="h">Without sidetrack</text>
+  <text x="90" y="750" class="t">stash → switch → fix → switch back</text>
+  <text x="90" y="780" class="t">→ unstash → hope nothing broke</text>
+  <text x="90" y="810" class="small">Slow, risky, easy to lose context</text>
+
+  <rect class="card-ok" x="620" y="665" width="520" height="170" rx="18"/>
+  <text x="650" y="710" class="h">With sidetrack</text>
+  <text x="650" y="750" class="t">add → go → fix → rm / cleanup</text>
+  <text x="650" y="780" class="t">Each task gets its own desk</text>
+  <text x="650" y="810" class="small">Fast, clean, weekly multi-branch flow</text>
+</svg>

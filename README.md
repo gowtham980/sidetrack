@@ -142,6 +142,7 @@ Flow diagram and visual overview of the command path, default layout, and weekly
 
 - Interactive HTML: [`docs/how-it-works.html`](docs/how-it-works.html)
 - SVG visual: [`docs/flow.svg`](docs/flow.svg)
+- Use cases image: [`docs/use-cases.svg`](docs/use-cases.svg)
 
 ```text
 You  →  sidetrack CLI  →  gitops  →  git worktree
